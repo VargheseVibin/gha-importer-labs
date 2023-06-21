@@ -1,0 +1,36 @@
+# Logfile created on 2023-06-21 07:47:24 +0000 by logger.rb/v1.5.3
+I, [2023-06-21T07:47:24.151295 #1]  INFO -- : Using GitHub Features: Defaults
+I, [2023-06-21T07:47:24.151354 #1]  INFO -- : Auditing 'http://localhost:8080/'
+I, [2023-06-21T07:47:24.161039 #1]  INFO -- request: GET http://localhost:8080/api/json?tree=jobs%5Bname%2Curl%2CfullName%5D
+I, [2023-06-21T07:47:24.211204 #1]  INFO -- response: Status 200
+I, [2023-06-21T07:47:24.212655 #1]  INFO -- request: GET http://localhost:8080/job/monas_dev_work/api/json?tree=jobs%5Bname%2Curl%2CfullName%5D
+I, [2023-06-21T07:47:24.229354 #1]  INFO -- response: Status 200
+I, [2023-06-21T07:47:24.230070 #1]  INFO -- : Thread collection size: 4
+I, [2023-06-21T07:47:24.231643 #1]  INFO -- request: GET http://localhost:8080/job/monas_dev_work/job/monas_freestyle/config.xml
+I, [2023-06-21T07:47:24.232671 #1]  INFO -- request: GET http://localhost:8080/job/test_freestyle_project/config.xml
+I, [2023-06-21T07:47:24.236085 #1]  INFO -- request: GET http://localhost:8080/job/TestPipeline/config.xml
+I, [2023-06-21T07:47:24.250893 #1]  INFO -- response: Status 200
+I, [2023-06-21T07:47:24.266270 #1]  INFO -- response: Status 200
+I, [2023-06-21T07:47:24.278009 #1]  INFO -- request: POST http://localhost:8080/pipeline-model-converter/toJson
+I, [2023-06-21T07:47:24.278717 #1]  INFO -- response: Status 200
+I, [2023-06-21T07:47:24.304955 #1]  INFO -- response: Status 404
+D, [2023-06-21T07:47:24.306856 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Shell'
+D, [2023-06-21T07:47:24.307797 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Env]: Located transformer for 'org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper'
+D, [2023-06-21T07:47:24.311311 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Shell'
+D, [2023-06-21T07:47:24.311510 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Shell'
+D, [2023-06-21T07:47:24.311743 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.plugins.git.GitPublisher'
+D, [2023-06-21T07:47:24.311997 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Mailer'
+D, [2023-06-21T07:47:24.312247 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::On]: Located transformer for 'hudson.triggers.TimerTrigger'
+D, [2023-06-21T07:47:24.312902 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Env]: Located transformer for 'org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper'
+I, [2023-06-21T07:47:24.315311 #1]  INFO -- : Output file(s):
+I, [2023-06-21T07:47:24.319882 #1]  INFO -- :   tmp/audit/monas_dev_work/monas_freestyle/.github/workflows/monas_freestyle.yml
+I, [2023-06-21T07:47:24.321167 #1]  INFO -- :   tmp/audit/monas_dev_work/monas_freestyle/config.json
+I, [2023-06-21T07:47:24.324020 #1]  INFO -- :   tmp/audit/test_freestyle_project/.github/workflows/test_freestyle_project.yml
+I, [2023-06-21T07:47:24.325348 #1]  INFO -- :   tmp/audit/test_freestyle_project/config.json
+I, [2023-06-21T07:47:24.326674 #1]  INFO -- :   tmp/audit/TestPipeline/error.txt
+I, [2023-06-21T07:47:24.327765 #1]  INFO -- :   tmp/audit/TestPipeline/config.json
+I, [2023-06-21T07:47:24.341770 #1]  INFO -- :   tmp/audit/workflow_usage.csv
+I, [2023-06-21T07:47:24.346153 #1]  INFO -- :   tmp/audit/audit_summary.md
+I, [2023-06-21T07:47:27.272072 #1]  INFO -- request: GET https://api.github.com/user
+I, [2023-06-21T07:47:27.588228 #1]  INFO -- response: Status 200
+I, [2023-06-21T07:47:27.590188 #1]  INFO -- : Sending telemetry with transaction id '58adff3f-eebc-42c1-b7ab-cf08ad316cb3'

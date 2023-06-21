@@ -1,0 +1,11 @@
+Pipeline,Action,File path
+monas_dev_work/monas_freestyle,actions/checkout@v3.5.0,tmp/audit/monas_dev_work/monas_freestyle/.github/workflows/monas_freestyle.yml
+test_freestyle_project,actions/checkout@v3.5.0,tmp/audit/test_freestyle_project/.github/workflows/test_freestyle_project.yml
+TestPipeline,actions/checkout@v3.5.0,tmp/audit/TestPipeline/.github/workflows/testpipeline.yml
+
+Pipeline,Secret,File path
+monas_dev_work/monas_freestyle,${{ secrets.SECRET_TEST_EXPRESSION_VAR }},tmp/audit/monas_dev_work/monas_freestyle/.github/workflows/monas_freestyle.yml
+test_freestyle_project,${{ secrets.EXPRESSION_FIRST_VAR }},tmp/audit/test_freestyle_project/.github/workflows/test_freestyle_project.yml
+
+Pipeline,Runner,File path
+test_freestyle_project,DemoRunner,tmp/audit/test_freestyle_project/.github/workflows/test_freestyle_project.yml

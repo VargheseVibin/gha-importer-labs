@@ -1,0 +1,63 @@
+# Logfile created on 2023-06-21 09:15:44 +0000 by logger.rb/v1.5.3
+I, [2023-06-21T09:15:44.181405 #1]  INFO -- : Using GitHub Features: Defaults
+I, [2023-06-21T09:15:44.181492 #1]  INFO -- : Auditing 'http://localhost:8080'
+I, [2023-06-21T09:15:44.190832 #1]  INFO -- request: GET http://localhost:8080/api/json?tree=jobs%5Bname%2Curl%2CfullName%5D
+I, [2023-06-21T09:15:44.244549 #1]  INFO -- response: Status 200
+I, [2023-06-21T09:15:44.246275 #1]  INFO -- request: GET http://localhost:8080/job/monas_dev_work/api/json?tree=jobs%5Bname%2Curl%2CfullName%5D
+I, [2023-06-21T09:15:44.268485 #1]  INFO -- response: Status 200
+I, [2023-06-21T09:15:44.269656 #1]  INFO -- : Thread collection size: 4
+I, [2023-06-21T09:15:44.271848 #1]  INFO -- request: GET http://localhost:8080/job/monas_dev_work/job/monas_freestyle/config.xml
+I, [2023-06-21T09:15:44.273194 #1]  INFO -- request: GET http://localhost:8080/job/test_freestyle_project/config.xml
+I, [2023-06-21T09:15:44.273959 #1]  INFO -- request: GET http://localhost:8080/job/TestPipeline/config.xml
+I, [2023-06-21T09:15:44.302003 #1]  INFO -- response: Status 200
+I, [2023-06-21T09:15:44.302103 #1]  INFO -- response: Status 200
+I, [2023-06-21T09:15:44.316703 #1]  INFO -- request: POST http://localhost:8080/pipeline-model-converter/toJson
+I, [2023-06-21T09:15:44.317545 #1]  INFO -- response: Status 200
+I, [2023-06-21T09:15:44.402430 #1]  INFO -- response: Status 200
+D, [2023-06-21T09:15:44.405822 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Shell'
+D, [2023-06-21T09:15:44.406930 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Env]: Located transformer for 'org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper'
+D, [2023-06-21T09:15:44.410227 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Shell'
+D, [2023-06-21T09:15:44.411538 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Shell'
+D, [2023-06-21T09:15:44.411794 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.plugins.git.GitPublisher'
+D, [2023-06-21T09:15:44.412005 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Jobs]: Located transformer for 'hudson.tasks.Mailer'
+D, [2023-06-21T09:15:44.412305 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::On]: Located transformer for 'hudson.triggers.TimerTrigger'
+D, [2023-06-21T09:15:44.412962 #1] DEBUG -- : [Transformers::Jenkins::DesignerPipeline::Env]: Located transformer for 'org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper'
+D, [2023-06-21T09:15:44.415080 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Defaults]: Failed to locate transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.415178 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::RunsOn]: Failed to locate transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.415249 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Container]: Located transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.415348 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Options]: Failed to locate transformer for 'timestamps'
+D, [2023-06-21T09:15:44.415429 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Options]: Failed to locate transformer for 'skipDefaultCheckout'
+D, [2023-06-21T09:15:44.415475 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Options]: Failed to locate transformer for 'buildDiscarder'
+D, [2023-06-21T09:15:44.415518 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Options]: Failed to locate transformer for 'disableConcurrentBuilds'
+D, [2023-06-21T09:15:44.415592 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::RunsOn]: Failed to locate transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.416306 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Container]: Located transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.430373 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.430720 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.430923 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.431078 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.431260 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'container'
+D, [2023-06-21T09:15:44.431640 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.432075 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'container'
+D, [2023-06-21T09:15:44.432216 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.432418 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.432525 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Defaults]: Failed to locate transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.432570 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::RunsOn]: Failed to locate transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.432593 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Container]: Located transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.432619 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::RunsOn]: Failed to locate transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.432653 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Container]: Located transformer for 'kubernetes'
+D, [2023-06-21T09:15:44.432928 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'container'
+D, [2023-06-21T09:15:44.433012 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+D, [2023-06-21T09:15:44.433150 #1] DEBUG -- : [Transformers::Jenkins::JenkinsfilePipeline::DeclarativePipeline::Jobs]: Located transformer for 'script'
+I, [2023-06-21T09:15:44.447629 #1]  INFO -- : Output file(s):
+I, [2023-06-21T09:15:44.451478 #1]  INFO -- :   tmp/audit/monas_dev_work/monas_freestyle/.github/workflows/monas_freestyle.yml
+I, [2023-06-21T09:15:44.452494 #1]  INFO -- :   tmp/audit/monas_dev_work/monas_freestyle/config.json
+I, [2023-06-21T09:15:44.455434 #1]  INFO -- :   tmp/audit/test_freestyle_project/.github/workflows/test_freestyle_project.yml
+I, [2023-06-21T09:15:44.456421 #1]  INFO -- :   tmp/audit/test_freestyle_project/config.json
+I, [2023-06-21T09:15:44.467309 #1]  INFO -- :   tmp/audit/TestPipeline/.github/workflows/testpipeline.yml
+I, [2023-06-21T09:15:44.468367 #1]  INFO -- :   tmp/audit/TestPipeline/config.json
+I, [2023-06-21T09:15:44.470056 #1]  INFO -- :   tmp/audit/TestPipeline/jenkinsfile
+I, [2023-06-21T09:15:44.492280 #1]  INFO -- :   tmp/audit/workflow_usage.csv
+I, [2023-06-21T09:15:44.504963 #1]  INFO -- :   tmp/audit/audit_summary.md
+I, [2023-06-21T09:15:47.363653 #1]  INFO -- request: GET https://api.github.com/user
+I, [2023-06-21T09:15:47.664600 #1]  INFO -- response: Status 200
+I, [2023-06-21T09:15:47.666057 #1]  INFO -- : Sending telemetry with transaction id 'afaa3caf-1293-432a-a8d0-27abecae8937'
