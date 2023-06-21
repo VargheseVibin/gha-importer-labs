@@ -1,0 +1,188 @@
+name: TestPipeline
+on:
+  workflow_dispatch:
+env:
+  CREDENTIALS_ID: jenkins-bitbucket
+  CRED_ID: karuna-bitbucket
+#   # This item has no matching transformer
+#   GIT_CREDENTIALS:
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "sonarQube = new ch.sunrise.codequality.SonarQube()\n\t\t\t\t\tgo = new ch.sunrise.build.Go()\n\t\t\t\t\tcommonOpts = new ch.sunrise.common.PipelineOpts()\n\t\t\t\t\tcheckMarxSast = new ch.sunrise.sast.CheckMarx()\n\t\t\t\t\tcheckMarxSca = new ch.sunrise.sca.CheckMarx()\n\t\t\t\t\tnotification = new ch.sunrise.communication.Notifications()\n\t\t\t\t\tpullRequestJob = env.BRANCH_NAME?.matches('PR-\\\\d+')\n\t\t\t\t\tprintln \"pull request job : ${{ env.pullRequestJob }}\"\n\t\t\t\t\tif(!pullRequestJob){\n\t\t\t\t\t\tenv.PIPELINE_VALUES_PATH = \"${{ env.PIPELINE_VALUES_PATH }}/pipeline-build-${{ env.BRANCH_NAME }}.yaml\"\n\t\t\t\t\t} else{\n\t\t\t\t\t\tenv.PIPELINE_VALUES_PATH = \"${{ env.PIPELINE_VALUES_PATH }}/pipeline-build-pr.yaml\"\n\t\t\t\t\t}\n\n\t\t\t\t\tpipelineValues = new ch.sunrise.common.pipelineValues()\n\t\t\t\t\tpipelineValues.loadPipelineValues()\n\t\t\t\t\tpipelineOpts = commonOpts.getPipelineOpts(opts)\n\t\t\t\t\timage = new ch.sunrise.docker.Image()\n\t\t\t\t\tops = new ch.sunrise.gitops.ops()\n\t\t\t\t\targocd = new ch.sunrise.deployment.ArgoCD()\n\t\t\t\t\trobotApi = new ch.sunrise.robot.RobotApi()\n\t\t\t\t\tcommonUtils = new ch.sunrise.common.Utils()\n\t\t\t\t\tversionUtils = new ch.sunrise.common.Versioning()\n\t\t\t\t\tgit  = new ch.sunrise.scm.Git()\n\t\t\t\t\teaiCockpit = new ch.sunrise.dashboard.Eaicockpit()\n\t\t\t\t\tdeployEnabled = false\n\t\t\t\t\ttry {\n\t\t\t\t\t\tdeployEnabled = DEPLOY_ENABLED\n\t\t\t\t\t\tdeployEnabled = commonUtils.enableDeploy(pipelineOpts.branch)\n\t\t\t\t\t} catch (propertyError) {\n\t\t\t\t\t}\n\t\t\t\t\tsh \"ls -la\"\n\t\t\t\t\tsh \"mkdir -p ${{ env.BUILD_PATH }}\""
+  prod_shadow_checks:
+    if:
+#       # Unsupported condition(s) [expression]
+    name: prod shadow checks
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: prepare
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: eaiCockpit.prodShadowCheck()
+  Checkout:
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: prod_shadow_checks
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "LAST_ACTIVE_STAGE = env.STAGE_NAME\n\t\t\t\t\tdir(\"${{ env.BUILD_PATH }}\"){\n\t\t\t\t\t\tgit.checkout([],BRANCH_NAME)\n\t\t\t\t\t}"
+  Build_Application:
+    name: Build Application
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: Checkout
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "LAST_ACTIVE_STAGE = env.STAGE_NAME\n\t\t\t\t\tdir(\"${{ env.BUILD_PATH }}\") {\n\t\t\t\t\t\tsh \"ls -la\"\n\t\t\t\t\t\tsh \"git status\"\n\t\t\t\t\t\tgo.execute()\n\t\t\t\t\t\tenv.version = versionUtils.\"getVersion${{ env.VERSIONING_FUNCTION }}\"()\n\t\t\t\t\t}"
+  Code_Quality_Check:
+    if:
+#       # Unsupported condition(s) [expression]
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: Build_Application
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+    # - The `container` step was transformed into the `sonar-scanner-cli_5871f6c1-035f-4dfe-8481-9f5bd22ee413` job
+    #   which runs child steps in the corresponding container. Ensure that all steps that depend on this job,
+    #   such as accessing build artifacts, also run within the `sonar-scanner-cli_5871f6c1-035f-4dfe-8481-9f5bd22ee413` job.
+  Build_and_Push_Application_Image:
+    if:
+#       # Unsupported condition(s) [expression]
+    name: Build and Push Application Image
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: Code_Quality_Check
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+    # - The `container` step was transformed into the `docker_254b1a58-59a5-4223-8b73-331d955b1914` job
+    #   which runs child steps in the corresponding container. Ensure that all steps that depend on this job,
+    #   such as accessing build artifacts, also run within the `docker_254b1a58-59a5-4223-8b73-331d955b1914` job.
+  Image_tag_and_hash_update:
+    if:
+#       # Unsupported condition(s) [expression]
+    name: Image tag and hash update
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: Build_and_Push_Application_Image
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "LAST_ACTIVE_STAGE = env.STAGE_NAME\n\t\t\t\t\t\tops.updateImageDetails(env.IMAGE_HASH, env.IMAGE_VERSION)"
+  Deployment:
+    if:
+#       # Unsupported condition(s) [expression]
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs: Image_tag_and_hash_update
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+    # - The `container` step was transformed into the `ansible_8d63e490-75fd-481f-9c55-076d4a8b8b23` job
+    #   which runs child steps in the corresponding container. Ensure that all steps that depend on this job,
+    #   such as accessing build artifacts, also run within the `ansible_8d63e490-75fd-481f-9c55-076d4a8b8b23` job.
+  Post-Build:
+    if: always()
+    name: Post Build
+    runs-on: ubuntu-latest
+    container:
+      # Unable to parse Kubernetes manifest due to invalid YAML syntax. Please fix the manifest in your Jenkins pipeline.
+    needs:
+    - prepare
+    - prod_shadow_checks
+    - Checkout
+    - Build_Application
+    - Code_Quality_Check
+    - Build_and_Push_Application_Image
+    - Image_tag_and_hash_update
+    - Deployment
+    steps:
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "def content = \"\"\n\t\t\t\t if(currentBuild.result == 'SUCCESS') {    \n\t\t\t\t   content += '${SCRIPT,template=\"email.template\"}'\n\t\t\t\t }\n\t\t   // if(currentBuild.result == 'FAILURE') \n\t\t\t\telse  if(currentBuild.result == 'FAILURE')  {\n\t\t\t\t  content = \"\\n\\nFailed at stage: '${{ env.LAST_ACTIVE_STAGE }}'\\n\"              \n\t\t\t\t  content += '${SCRIPT,template=\"email.template\"}'\n\t\t\t\t }\n\t\t\t\telse {\n\t\t\t\t }\n\t\t\t  notification.sendNotifications(currentBuild.result, \"DevSecOps\" , content)"
+#       if: always()
+  sonar-scanner-cli_5871f6c1-035f-4dfe-8481-9f5bd22ee413:
+    container:
+#       # No container specification defined with label `sonar-scanner-cli`. Please fix the Kubernetes manifest in your Jenkins pipeline or change the container label.
+    steps:
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "LAST_ACTIVE_STAGE = env.STAGE_NAME\n\t\t\t\t\t\tsonarQube.execute(true)"
+  docker_254b1a58-59a5-4223-8b73-331d955b1914:
+    container:
+#       # No container specification defined with label `docker`. Please fix the Kubernetes manifest in your Jenkins pipeline or change the container label.
+    steps:
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "LAST_ACTIVE_STAGE = env.STAGE_NAME\n\t\t\t\t\t\tversionUtils.setImageVersionAndName()\n\t\t\t\t\t\timage.prepareGoAppDirectory()\n\t\t\t\t\t\timage.buildAndPushImage(env.IMAGE_NAME, env.IMAGE_VERSION)\n\t\t\t\t\t\tenv.IMAGE_HASH = image.getImageDigest(env.IMAGE_NAME, env.IMAGE_VERSION)"
+  ansible_8d63e490-75fd-481f-9c55-076d4a8b8b23:
+    container:
+#       # No container specification defined with label `ansible`. Please fix the Kubernetes manifest in your Jenkins pipeline or change the container label.
+    steps:
+#     # 'script' was not transformed because there is no suitable equivalent in GitHub Actions
+#     - name: script
+#       arguments:
+#       - key: scriptBlock
+#         value:
+#           isLiteral: true
+#           value: "LAST_ACTIVE_STAGE = env.STAGE_NAME\n\t\t\t\t\t   argocd.checkoutDeploymentCode()\n\t\t\t\t\t   argocd.deploymentApps()"
